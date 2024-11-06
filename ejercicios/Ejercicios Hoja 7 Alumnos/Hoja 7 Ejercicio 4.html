@@ -42,5 +42,34 @@ td{
 </body>
 <script type="text/JavaScript">
 
+window.onload=function cargar(){
+	const fil=4;
+	const col=4;
+const tabla =new Array(fil);
+for (let i=0;i<fil;i++)
+	tabla[i]=new Array(col);
+ 
+let n=0
+console.log(n);
+for (let i=0;i<fil;i++)
+	for (let j=0;j<col;j++){
+		n=Math.floor(Math.random()*9);
+		tabla[i][j]=n;
+		}
+table=document.createElement('table');
+for (let i=0;i<fil;i++){
+    let tr=document.createElement('tr');
+	for (let j=0;j<col;j++){	
+		let td=document.createElement('td');
+		
+		td.innerHTML='**';
+		console.log(tabla[i][j]);
+		td.value=tabla[i][j];
+		tr.appendChild(td);
+		}
+	table.appendChild(tr);
+	}
+document.getElementById("div1").appendChild(table);
+}
 </script>
 </html>

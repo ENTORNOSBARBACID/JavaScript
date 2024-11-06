@@ -39,10 +39,89 @@
 
 
 <script type="text/javascript">
+window.onload=function mostrar(){
+	const fil=id1.value;
+	const col=id2.value;
+const tabla =new Array(fil);
+for (let i=0;i<fil;i++)
+	tabla[i]=new Array(col);
+ 
+let n=1;
+for (let i=0;i<fil;i++)
+	for (let j=0;j<col;j++){
+		tabla[i][j]=n;
+		n++;
+		}
+table=document.createElement('table');
+for (let i=0;i<fil;i++){
+    let tr=document.createElement('tr');
+	for (let j=0;j<col;j++){	
+		let td=document.createElement('td');
+		td.innerHTML=tabla[i][j];
+		tr.appendChild(td);
+		}
+	table.appendChild(tr);
+	}
+document.getElementById("div1").appendChild(table);
+}
+
+
+function cargar(){
+
+let elementos = document.getElementsByName("eleccion");
+let seleccionado = null;
+
+for (let i = 0; i < elementos.length; i++) {
+    if (elementos[i].checked) {
+        seleccionado = elementos[i].value;
+        break;
+    }
+}
+console.log(seleccionado);
+div1.innerHTML="";
+const fil=id1.value;
+const col=id2.value;
+const tabla =new Array(fil);
+for (let i=0;i<fil;i++)
+	tabla[i]=new Array(col);
+let salir=false;
+let n=0;
+for (let i=0;i<fil;i++)
+	for (let j=0;j<col;j++){
+		if(seleccionado==1){
+			n++;
+			tabla[i][j]=n;
+			}else if(seleccionado==2){
+				n+=2;
+				tabla[i][j]=n;
+				}else if(seleccionado==3){
+					if(n==0)							
+						n++;
+					tabla[i][j]=n;
+					n+=2;
+					}else if(seleccionado==4){
+								n++;
+								tabla[i][j]=id3.value * n;
+						}
+						
+		}
+table=document.createElement('table');
+for (let i=0;i<fil;i++){
+    let tr=document.createElement('tr');
+	for (let j=0;j<col;j++){	
+		let td=document.createElement('td');
+		td.innerHTML=tabla[i][j];
+		tr.appendChild(td);
+		}
+	table.appendChild(tr);
+	}
+
+	document.getElementById("div1").appendChild(table);
+}
 
 </script>
 </head>
-<body>
+<body window.onload="cargar()">
 <div>
 <h3>PROBANDO ARRAYS BIDIMENSIONALES</h3>
 <br>
