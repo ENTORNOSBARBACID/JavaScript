@@ -14,7 +14,7 @@ table{
 	font-size: 20px;
 	font-family: 'Indie Flower', cursive;
 }
-td{
+td {
 	border: 1px solid red;
 	width: 21px;
 }
@@ -43,9 +43,9 @@ td{
 <script type="text/JavaScript">
 
 window.onload=function cargar(){
-	const fil=4;
-	const col=4;
-const tabla =new Array(fil);
+	fil=4;
+	col=4;
+	tabla =new Array(fil);
 for (let i=0;i<fil;i++)
 	tabla[i]=new Array(col);
  
@@ -53,23 +53,40 @@ let n=0
 console.log(n);
 for (let i=0;i<fil;i++)
 	for (let j=0;j<col;j++){
-		n=Math.floor(Math.random()*9);
+		n=Math.floor(Math.random()*9)+1;
 		tabla[i][j]=n;
 		}
 table=document.createElement('table');
+
+let codigo='<table border=1 id="tabla"> ';
+	let cont=0;
 for (let i=0;i<fil;i++){
-    let tr=document.createElement('tr');
-	for (let j=0;j<col;j++){	
-		let td=document.createElement('td');
-		
-		td.innerHTML='**';
-		console.log(tabla[i][j]);
-		td.value=tabla[i][j];
-		tr.appendChild(td);
+	codigo+='<tr> ';
+	for (let j=0;j<col;j++){
+		codigo+='<td><label name="item-'+tabla[i][j]+'">**</label></td>' ;
+		cont++;
 		}
-	table.appendChild(tr);
+	codigo+='</tr>';
 	}
-document.getElementById("div1").appendChild(table);
+codigo+='</table>';
+document.getElementById("div1").innerHTML=codigo;
+}
+cont=0
+function buscar(e){
+	nombre="item-"+e;
+	let contenido=document.getElementsByName(nombre);
+	console.log(contenido);
+console.log("______________");
+for (let i =0; i<contenido.length; i++)
+contenido[i].innerHTML=e;
+if (contenido.length==0){
+	cont+=1;
+	console.log(cont)	
+	document.getElementById("div2").innerHTML="Total de intentos: "+cont;
+}
+if(cont==2){
+	document.getElementById("tabla").innerHTML="HAS PERDIDO!!!!";
+}
 }
 </script>
 </html>
