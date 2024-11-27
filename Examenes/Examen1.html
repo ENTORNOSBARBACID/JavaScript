@@ -53,12 +53,7 @@ td{
                 else{
                 document.getElementById('edad').value=calcularEdad(mes+'/'+dia+'/'+año);
                 
-                const tds = document.querySelectorAll("table tr td");
-                tds.forEach((td) => {
-                    if(td.style=="background-color:green;")
-                        var precio=td.innerHTML
-                        console.log(precio);
-                });
+
                 }
     }
     function calcularEdad (e){ 
