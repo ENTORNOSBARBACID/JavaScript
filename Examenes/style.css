@@ -1,0 +1,117 @@
+
+Todos los temas
+Exámenes Años Anteriores
+Exámenes Años Anteriores
+Material
+03 Examen 1EV Javascript Tablas 23-24
+Publicado: 14 nov
+Material
+02 Recuperación 1EV Javascript Formularios 23-24
+Publicado: 16 oct
+Material
+01 Examen 1EV Javascript Formularios 23-24
+Publicado: 16 oct
+
+Examen Javascript 1EV 23-24 para ejercicio.pdf
+PDF
+
+EX 01.html
+HTML
+
+stylepoli.css
+Hoja de estilo
+01 JAVASCRIPT
+01 JAVASCRIPT
+Material
+08 Objetos del Navegador BOM
+Publicado: 18 nov
+Material
+07 Arrays
+Publicado: 31 oct
+Material
+06 Gestión de Eventos
+Última modificación: 27 oct
+Material
+05 Expresiones Regulares
+Última modificación: 16 oct
+Material
+04 Formularios
+Última modificación: 2 oct
+Material
+03 Objetos Date, String, Math, Number
+Última modificación: 24 sept
+Material
+02 JavaScript básico
+Última modificación: 18 sept
+Material
+01 Introducción a JavaScript
+Última modificación: 11 sept
+00 Introducción
+00 Introducción
+Material
+00 Introducción al Módulo. Selección de Arquitecturas y Herramientas de Programación
+Última modificación: 10 sept
+00 Presentación Módulo
+00 Presentación Módulo
+Material
+Presentación asignatura
+Publicado: 10 sept
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+#resultado {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}

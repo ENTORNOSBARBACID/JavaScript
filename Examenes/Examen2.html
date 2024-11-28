@@ -1,141 +1,145 @@
 <!DOCTYPE html>
 <html>
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Recuperación FORMULARIOS</title>
-        <link rel="stylesheet" href="main.css">
- <style type="text/css">
- #otro {
-	display:none;
-	}
 
- </style>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Recuperación FORMULARIOS</title>
+    <link rel="stylesheet" href="main.css">
+    <style type="text/css">
+        #otro {
+            display: none;
+        }
+    </style>
 </head>
 <script>
-function calcular(){
-    validar=false;
-    box=document.getElementsByName("c");
-    precio=0;
-    semanas=0;
-    console.log(box);
-    for(let i=0; i<box.length; i++){
-        if(box[i].checked){
-            console.log("entro");
-            validar=true;
-            if(box[0].checked){
-                if(document.getElementById("selprog").value=='0')
-                return alert("Falta iformacion de programacion");
-                else
-                semanas+=3;
-                precio+=Number(document.getElementById("selprog").value);
-            }
-            else if(box[2].checked){
-                if(document.getElementById("selweb").value=='0')
-                return alert("Falta iformacion de web");
-                else
-                semanas+=2;
-                precio+=Number(document.getElementById("selweb").value);
+    function calcular() {
+        validar = false;
+        box = document.getElementsByName("c");
+        precio = 0;
+        semanas = 0;
+        console.log(box);
+            if (box[0].checked) {
+                if (document.getElementById("selprog").value == '0')
+                    return alert("Falta iformacion de programacion");
+                else {
+                    validar = true;
+                    semanas += 3;
+                    precio += Number(document.getElementById("selprog").value);
+                    console.log(precio);
+                    console.log("a")
                 }
-            else if(box[1].checked){
-                semanas+=3;
-                precio+=Number(box[1].value);
             }
+            if (box[1].checked) {
+                validar=true;
+                console.log(box[1].value);
+                semanas += 3;
+                precio += 100;
+            }
+            if (box[2].checked) {
+                if (document.getElementById("selweb").value == '0')
+                    return alert("Falta iformacion de web");
+                else {
+                    validar=true;
+                    semanas += 2;
+                    precio += Number(document.getElementById("selweb").value);
+                }
 
+            }
+        if (validar == false) {
+            return alert('Falta elegir los checkbox');
+        }
+        // fechaHoy=new Date();
+        // fecha=new Date(document.getElementById("fec").value);
+
+        // diaSemana=["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+        // dia=fecha.getDay();
+
+        // diaIntroducido=fecha.getDate()
+        // mesIntroducido=fecha.getMonth();
+        // añoIntroducido=fecha.getFullYear();
+
+        // diaHoy=fechaHoy.getDate();
+        // mesHoy=fecha.getMonth();
+        // añoHoy=fecha.getFullYear();
+
+        // let diaSemanaNombe=diaSemana[dia];
+
+        // console.log(diaIntroducido);
+        // console.log(diaHoy);
+        // console.log(diaSemanaNombe);
+
+        // if(diaSemanaNombe=="sabado" || diaSemanaNombe=="domingo")
+        //     return alert("no se puede ni sabado ni domingo");
+
+        document.getElementById("precio").value = precio + " $";
+        document.getElementById("duracion").value = semanas + " semanas"
+        document.getElementById("otro").style.display = "block";
+    }
+    function comprobar_tfno(e) {
+        reg = /^\([1-9]{3}\)-[1-9]{3}-[1-9]{3}$/g
+        console.log(reg.test(e.value));
+        if (!e.value.match(reg)) {
+            e.style.backgroundColor = "#FADBD8";
+            e.focus;
+            e.value = "Codigo Erroneo";
+        } else {
+            e.style.backgroundColor = "white";
         }
     }
-    if(validar==false)
-    {
-        return alert('Falta elegir los checkbox');
+    function comprobar_codigo(e) {
+        reg = /^[^aeiouAEIOU]{3}\d{2,5}$/g
+        if (!e.vaue.match(reg)) {
+            e.style.backgroundColor = "#FADBD8";
+            e.focus;
+            e.value = "Codigo Erroneo";
+        } else {
+            e.style.backgroundColor = "white";
+        }
     }
-    // fechaHoy=new Date();
-    // fecha=new Date(document.getElementById("fec").value);
-
-    // diaSemana=["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
-    // dia=fecha.getDay();
-
-    // diaIntroducido=fecha.getDate()
-    // mesIntroducido=fecha.getMonth();
-    // añoIntroducido=fecha.getFullYear();
-
-    // diaHoy=fechaHoy.getDate();
-    // mesHoy=fecha.getMonth();
-    // añoHoy=fecha.getFullYear();
-    
-    // let diaSemanaNombe=diaSemana[dia];
-
-    // console.log(diaIntroducido);
-    // console.log(diaHoy);
-    // console.log(diaSemanaNombe);
-
-    // if(diaSemanaNombe=="sabado" || diaSemanaNombe=="domingo")
-    //     return alert("no se puede ni sabado ni domingo");
-
-    document.getElementById("precio").value=precio+" $";
-    document.getElementById("duracion").value=semanas+" semanas"
-    document.getElementById("otro").style.display="block";
-}
-function comprobar_tfno(e){
-    reg= /^\([1-9]{3}\)-[1-9]{3}-[1-9]{3}$/g
-    console.log(reg.test(e.value));
-    if(!reg.test(e.value)){
-        e.style.backgroundColor="#FADBD8";
-        e.focus;
-        e.value="Codigo Erroneo";
-    }else{
-        e.style.backgroundColor="white";
+    function cambio(e) {
+        e.style.backgroundColor = "#FDEBD0"
     }
-}
-function comprobar_codigo(e){
-    reg= /^[^aeiouAEIOU]{3}\d{2,5}$/g
-    console.log(reg.test(e.value));
-    if(!reg.test(e.value)){
-        e.style.backgroundColor="#FADBD8";
-        e.focus;
-        e.value="Codigo Erroneo";
-    }else{
-        e.style.backgroundColor="white";
-    }
-}
-function cambio(e){
-    e.style.backgroundColor="#FDEBD0"
-}
 </script>
+
 <body>
-<h1>LEARNING ABACO</h1>
-Esta es nuestra selección de CURSOS Certificados
-<br><br>
-<input type="checkbox" name="c">PROGRAMACION
-<select id="selprog">
-<option value="0">Selecciona</option>
-<option value="200">Java</option>
-<option value="80">PHP</option>
-<option value="120">Python</option>
-<option value="90">JavaScript</option>
-</select>
-<br><br>
-<input type="checkbox" value="100" name="c">MySQL
-<br><br>
-<input type="checkbox" name="c">DISEÑO WEB
- <select id="selweb">
- <option value="0">Selecciona</option>
-<option value="80">HTML</option>
-<option value="90">CSS</option>
-<option value="60">Bootstrap</option>
-</select>
-<br>
-<br> Teclee la fecha en la que quiere comenzar sus curso
-<br> (dd/mm/aaaa entre el día de hoy y 30 días, de lunes a viernes)
-<input type="date" id="fec" size=10 placeholder="dd/mm/aaaa">
-<hr>
-<input type="button" value="Mostrar Precio y Duración" onclick="calcular()"> 
-<br> <br>PRECIO <input type="text" id="precio" size=10 readonly>
-<br> <br>DURACIÓN <input type="text" id="duracion" size=10 readonly>
-</div>
-<hr>
-<div id="otro">
-Si dispones de un código descuento indícalo: <input type="text" id="codigo" size=10 onfocus="cambio(this)" onchange="comprobar_codigo(this)">
-Teléfono de contacto: <input type="text" id="codigo" size=12 placeholder="(XXX)-XXX-XXX" onfocus="cambio(this)" onchange="comprobar_tfno(this)">
-</div>
+    <h1>LEARNING ABACO</h1>
+    Esta es nuestra selección de CURSOS Certificados
+    <br><br>
+    <input type="checkbox" name="c">PROGRAMACION
+    <select id="selprog">
+        <option value="0">Selecciona</option>
+        <option value="200">Java</option>
+        <option value="80">PHP</option>
+        <option value="120">Python</option>
+        <option value="90">JavaScript</option>
+    </select>
+    <br><br>
+    <input type="checkbox" value="100" name="c">MySQL
+    <br><br>
+    <input type="checkbox" name="c">DISEÑO WEB
+    <select id="selweb">
+        <option value="0">Selecciona</option>
+        <option value="80">HTML</option>
+        <option value="90">CSS</option>
+        <option value="60">Bootstrap</option>
+    </select>
+    <br>
+    <br> Teclee la fecha en la que quiere comenzar sus curso
+    <br> (dd/mm/aaaa entre el día de hoy y 30 días, de lunes a viernes)
+    <input type="date" id="fec" size=10 placeholder="dd/mm/aaaa">
+    <hr>
+    <input type="button" value="Mostrar Precio y Duración" onclick="calcular()">
+    <br> <br>PRECIO <input type="text" id="precio" size=10 readonly>
+    <br> <br>DURACIÓN <input type="text" id="duracion" size=10 readonly>
+    </div>
+    <hr>
+    <div id="otro">
+        Si dispones de un código descuento indícalo: <input type="text" id="codigo" size=10 onfocus="cambio(this)"
+            onchange="comprobar_codigo(this)">
+        Teléfono de contacto: <input type="text" id="codigo" size=12 placeholder="(XXX)-XXX-XXX" onfocus="cambio(this)"
+            onchange="comprobar_tfno(this)">
+    </div>
 </body>
+
 </html>
