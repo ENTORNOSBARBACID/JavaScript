@@ -56,10 +56,14 @@
        salida=document.getElementById("fsal").value
 
         reg= /^(0[1-9]|[12]\d|3[01])\/\/(0[1-9]|1[012])\/\/2[45]$/
-        if(!reg.test(entrada))
-            return alert("Fecha entrada mal introducida")
-        if(!reg.test(salida))
-            return alert("Fecha salida mal introducida")
+        if(!reg.test(entrada)){
+            document.getElementById("fent").focus();
+            return alert("Fecha entrada mal introducida");
+        }
+        if(!reg.test(salida)){
+            document.getElementById("fsal").focus();
+            return alert("Fecha salida mal introducida");
+        }
 
         entrada=entrada.split('//');
         salida=salida.split('//');
@@ -70,10 +74,14 @@
         console.log(fechaE);
         console.log(fechaS);
 
-        if(fechaE < new Date())
+        if(fechaE < new Date()){
+            document.getElementById("fent").focus();
             return alert("Ese dia ya ha pasado");
-        if(fechaE>=fechaS)
+        }
+        if(fechaE>=fechaS){
+            document.getElementById("fsal").focus();
             return alert("No puedes salir antes de entrar");
+        }
             
         noches=fechaS-fechaE;
         noches=noches/3600000;
@@ -125,6 +133,7 @@
         if(!validar)
             return
         
+        
         console.log("precio despues de descuento"+precio);
         pd=precio;
 
@@ -145,14 +154,20 @@
 
         if(telefono!=""){
             reg=/^[67]\d{8}(\([67]\d{8}\))?$/
-            if(!telefono.match(reg))
+            if(!telefono.match(reg)){
+                document.getElementById("telefonos").focus();
                 return alert("telefono mal introducido");
+            }
         }
         
         if(telefono=="" && correo==""){
             validar=window.confirm('Seguro que no quiere que le contactemos?')
-            if(!validar)
+            if(!validar){
+                document.getElementById("telefonos").focus();
                 return alert("Necesita poner o el correo o el telefono")
+            }
+            else
+            document.getElementById("telefonos").focus();
         }
 
         pa*=noches;
@@ -182,6 +197,7 @@
 
         if(!codigo.match(reg)){
 
+            document.getElementById('socio').focus();
             alert('El codigo de socio no es valido');
             return false
 
