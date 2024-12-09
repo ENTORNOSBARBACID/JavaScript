@@ -58,6 +58,8 @@ for (let i=0;i<fil;i++)
 		}
 table=document.createElement('table');
 
+
+console.log(tabla);
 let codigo='<table border=1 id="tabla"> ';
 	let cont=0;
 for (let i=0;i<fil;i++){
@@ -71,20 +73,33 @@ for (let i=0;i<fil;i++){
 codigo+='</table>';
 document.getElementById("div1").innerHTML=codigo;
 }
+
+
 cont=0
+
+
 function buscar(e){
 	nombre="item-"+e;
 	let contenido=document.getElementsByName(nombre);
+	let validar=true;
 	console.log(contenido);
 console.log("______________");
-for (let i =0; i<contenido.length; i++)
-contenido[i].innerHTML=e;
-if (contenido.length==0){
+for (let i =0; i<contenido.length; i++){
+	if(contenido[i].innerHTML=='**')	{
+		contenido[i].innerHTML=e;
+		validar=true;
+		break;
+	}else{
+		validar=false;
+	}
+}
+
+if (contenido.length==0 || validar==false){
 	cont+=1;
 	console.log(cont)	
 	document.getElementById("div2").innerHTML="Total de intentos: "+cont;
 }
-if(cont==2){
+if(cont==5){
 	document.getElementById("tabla").innerHTML="HAS PERDIDO!!!!";
 }
 }
