@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DOM</title>
+    <link rel="stylesheet" href="main.css">
+    <script type="text/JavaScript">
+ function conectar(){
+    lista=document.getElementsByTagName("li");
+    ol=document.getElementById("ol1");
+    usuario=document.getElementById("usu").value;
+
+    for (let i=0; i<lista.length; i++){
+        console.log(lista[i])
+        if(lista[i].innerHTML==usuario)
+            return alert("Usuario ya en la lista");
+    }
+    li=document.createElement("li");
+    li.innerHTML=usuario;
+    ol.appendChild(li);
+    document.getElementById("usu").value="";
+    document.getElementById("usu").focus()
+    document.getElementById("con").value="";
+ }
+ function desconectar(){
+    lista=document.getElementsByTagName("li");
+    ol=document.getElementById("ol1");
+    usuario=document.getElementById("usu").value;
+
+    for (let i=0; i<lista.length; i++){
+        console.log(lista[i])
+        if(lista[i].innerHTML==usuario){
+            alert("Usuario encontrado");
+            ol.removeChild(lista[i]);
+            break;
+        }
+    alert("usuario no encontrado");
+        
+    document.getElementById("usu").value="";
+    document.getElementById("usu").focus()
+    document.getElementById("con").value="";
+
+    }
+ }
+</script>
+</head>
+
+<body>
+    <font face="tahoma" size="6">
+        <div>
+            <p> REALIZANDO CONEXIONES </p>
+            <font face="tahoma" size="4">
+                <form name="miformulario">
+                    Usuario <input type="text" id="usu" size="15">
+                    Contraseña <input type="text" id="con" size="15">
+                    <br><br><br>
+                    <input type="button" value="CONECTAR" onclick="conectar()">
+                    <input type="button" value="DESCONECTAR" onclick="desconectar()">
+                    <br>
+                </form>
+                <ol id="ol1">
+                    <li>Pepe</li>
+                    <li>Ana</li>
+                </ol>
+            </font>
+</body>
+
+</html>
