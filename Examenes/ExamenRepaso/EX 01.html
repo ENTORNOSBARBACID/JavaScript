@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>EXAMEN EJERCICIO 1</title>
+		<link rel="stylesheet" href="main.css">
+<style>
+.clasePremio {color:red;}
+</style>		
+<script type="text/JavaScript"> 
+imagenes=new Array("Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard","Squirtle","Wartortle","Blastoise");
+saldo=10;
+gastado=0;
+ganado=0;
+function cargar(){
+    frase=["Jugada: 2€", '2 iguales: 5€ premio', "3 iguales: 10€ premio."]
+    cont=0
+    a=window.setInterval(function(){
+            document.getElementById("idspan").innerHTML=frase[cont];
+            cont++;
+            if(cont==3)
+                cont=0;
+        }, 1000);
+ 
+}
+function jugar() {
+    saldo-=2;
+    gastado+=2
+    if(saldo<=0)
+        return alert("ya no se puede jugar mas, saldo a 0");
+    tabla=document.getElementById("tabla");
+    numeros="";
+    //primera fila
+
+    for(let i=0; i<1; i++){
+        columna=document.createElement("tr");
+        for (let k=0; k<4; k++){
+            fila=document.createElement("td");
+            randomNumber = Math.floor(Math.random() * 9);
+            fila.innerHTML="<img src='pokemon/"+imagenes[randomNumber]+".png'>";
+            if(k<3){
+                columna.appendChild(fila);
+                numeros+=randomNumber+",";
+            }
+            else{
+                ganador=numeros.split(",");
+                console.log(ganador);
+                if(ganador[0]==ganador[1] && ganador[0]==ganador[2] && ganador[1]==ganador[2]){
+                    fila.innerHTML="Ganaste 10$";
+                    columna.appendChild(fila);
+                    saldo+=10;
+                    ganado+=10;
+                }else if(ganador[0]==ganador[1] || ganador[0]==ganador[2] || ganador[1]==ganador[2]){
+                    fila.innerHTML="Ganaste 5$";
+                    columna.appendChild(fila);
+                    saldo+=5;
+                    ganado+=5;
+                }else{
+                    fila.innerHTML="Perdiste panoli";
+                    columna.appendChild(fila);
+                }
+                numeros="";
+            }
+        }
+    tabla.appendChild(columna);
+    }
+}
+function borrar() {
+    tabla=document.getElementById("tabla");
+    tr=document.getElementsByTagName("tr");
+    td=document.getElementsByTagName("td");
+
+    
+        for(let k = tr.length - 1; k >= 0; k--){
+            if(tr[k].children[3].textContent=="Perdiste panoli"){
+                tabla.removeChild(tr[k]);
+            }
+        }
+    }
+    function abrirVentana(x) {
+        mia = window.open(
+          x.value,
+          "_blank",
+          "width=300,height=200,top=200,left=300"
+        );
+      }
+      function ganancias() {
+        //alert(tiradas);
+        mia = window.open(
+          "",
+          "_blank",
+          "width=300,height=200,top=200,left=300"
+        );
+        mia.document.write(
+          `<table style="border-collapse: collapse; width: 100%;">
+            <tr>
+              <td style="border: 1px solid black; padding: 5px;">Saldo</td>
+              <td style="border: 1px solid black; padding: 5px;">Gastado</td>
+              <td style="border: 1px solid black; padding: 5px;">Ganado</td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid black; padding: 5px;">`+saldo+`€</td>
+              <td style="border: 1px solid black; padding: 5px;">`+gastado+`€</td>
+              <td style="border: 1px solid black; padding: 5px;">`+ganado+`€</td>
+            </tr>
+          </table>`
+          //el boton de borrar
+        );
+      }
+</script>
+</head>
+<body onload="cargar()">
+<div>
+<p> JUGANDO A POKEMON &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id='idspan'></span></p>  
+<input type="button" value="JUGAR" onclick=jugar()>
+<input type="button" value="BORRAR SIN PREMIO" onclick="borrar()">
+<input type="button" value="http://www.pokemongo.com/es-es/"onclick="abrirVentana(this)">
+<input type="button" value="GANANCIAS" onclick="ganancias()">
+<br>
+ <table id="tabla">
+</table>
+</body>
+</html>
